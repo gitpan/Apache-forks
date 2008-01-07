@@ -1,5 +1,5 @@
 package Apache::forks;
-$VERSION = 0.021;
+$VERSION = 0.022;
 
 use strict;
 use warnings;
@@ -115,11 +115,11 @@ __END__
 
 =head1 NAME
 
-forks::Apache - Transparent Apache ithreads integration using forks
+Apache::forks - Transparent Apache ithreads integration using forks
 
 =head1 VERSION
 
-This documentation describes version 0.021.
+This documentation describes version 0.022.
 
 =head1 SYNOPSIS
 
@@ -189,7 +189,7 @@ the join operation would block indefinately in mod_perl until the current
 request handler timed out and the execution was terminated by Apache. This occurs
 because all other currently running Apache handler child processes are active
 perl threads that can not be joined until the Apache httpd server is shut down
-or the child handler is recycled by Apache (i.e. L<MaxRequestsPerChild|http://httpd.apache.org/docs/1.3/mod/core.html#maxrequestsperchild>
+or the child handler is recycled by Apache (i.e. L<<a href="http://httpd.apache.org/docs/1.3/mod/core.html#maxrequestsperchild">MaxRequestsPerChild</a>>
 was exceeded).
 
 The solution is to do the following instead:
@@ -228,7 +228,7 @@ This module will only work with Apache httpd 1.3.0 or newer.  This is due to the
 lack of mod_perl support for PerlChildInitHandler directive.  See L<mod_perl/"mod_perl">
 for more information regarding this.
 
-For Apache 2.x, this module currently only supports the L<prefork|"http://httpd.apache.org/docs/2.0/mod/prefork.html">
+For Apache 2.x, this module currently only supports the L<<a href="http://httpd.apache.org/docs/2.0/mod/prefork.html">prefork</a>>
 MPM (Multi-Processing Module).  This is due to the architecture of L<forks>,
 which only supports one perl thread per process.
 
@@ -257,7 +257,7 @@ Eric Rybski
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2007 Eric Rybski <rybskej@yahoo.com>.
+Copyright (c) 2007-2008 Eric Rybski <rybskej@yahoo.com>.
 All rights reserved.  This program is free software; you can redistribute it
 and/or modify it under the same terms as Perl itself.
 
