@@ -1,3 +1,6 @@
+0.021	January 7 2007
+	Improved internal load order of mod_perl modules for improved stability.
+	
 0.02	January 7 2007
 	Improved mod_perl 1.x support.
 	Fixed a few bugs in child handler.

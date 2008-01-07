@@ -1,5 +1,5 @@
 package Apache::forks;
-$VERSION = 0.02;
+$VERSION = 0.021;
 
 use strict;
 use warnings;
@@ -12,13 +12,10 @@ my @Import;
 our $DEBUG = 0;
 
 BEGIN {
-	require forks;
-	die "forks version 0.26 or later required--this is only version $forks::VERSION"
-		unless defined($forks::VERSION) && $forks::VERSION >= 0.26;
-	require forks::shared;
 	if (MP2) {
 		require mod_perl2;
 		require Apache2::MPM;
+		require forks;
 		require Apache2::Module;
 		require Apache2::ServerUtil;
 	}
@@ -27,14 +24,20 @@ BEGIN {
 		if (defined $mod_perl::VERSION && $mod_perl::VERSION > 1 &&
 			$mod_perl::VERSION < 1.99) {
 			require Apache;
+			require forks;
 
 			#not using Apache::fork support yet (may be non-portable and/or deprecated)
 #			require Apache::fork;
 #			Apache::fork::forkoption(1);
 #			no warnings 'redefine';
 #			*threads::_fork = \&Apache::fork::fork;
+		} else {
+			die "Apache.pm is unavailable or unsupported version ($mod_perl::VERSION)";
 		}
 	}
+	die "forks version 0.26 or later required--this is only version $forks::VERSION"
+		unless defined($forks::VERSION) && $forks::VERSION >= 0.26;
+	require forks::shared;
 	{
 		no warnings 'redefine';
 		my $old_server_pre_startup = \&threads::_server_pre_startup;
@@ -116,7 +119,7 @@ forks::Apache - Transparent Apache ithreads integration using forks
 
 =head1 VERSION
 
-This documentation describes version 0.02.
+This documentation describes version 0.021.
 
 =head1 SYNOPSIS
 
