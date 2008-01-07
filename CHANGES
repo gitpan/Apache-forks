@@ -1,0 +1,9 @@
+0.02	January 7 2007
+	Improved mod_perl 1.x support.
+	Fixed a few bugs in child handler.
+	Silenced some warnings.
+	Added a few new sections to the POD.
+	Updated test suite to correctly support forks 0.24+ standard threads exit() behavior.
+
+0.01	1 May 2007
+	First public version.
