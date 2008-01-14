@@ -1,7 +1,7 @@
 Apache::forks - Transparent Apache ithreads integration using forks
 
 Version:
- 0.022
+ 0.03
 
 DESCRIPTION
 
